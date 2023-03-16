@@ -1,2 +1,2 @@
 #!/bin/bash
-export CFILE=main.c && gcc $CFILE  cisfun
+gcc main.c && mv a.out cisfun
