@@ -1,2 +1,2 @@
 #!/bin/bash
-CFILE=$CFILE;ASMFILE=${CFILE%.c}.s;gcc -S $CFILE -o $ASMFILE
+gcc -S $CFILE -o ${CFILE%.c}.s
