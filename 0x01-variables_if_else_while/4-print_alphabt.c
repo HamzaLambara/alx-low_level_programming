@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  *
- * This program prints the alphabet in lowercase, excluding the letters 'e' and 'q'.
+ *Program prints the alphabet in lowercase excluding the letters 'e' and 'q'
  *
  * Return: Always 0 (Success)
  */
