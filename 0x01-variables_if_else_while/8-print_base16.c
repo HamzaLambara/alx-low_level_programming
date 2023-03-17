@@ -16,6 +16,5 @@ putchar(hex[i / 8]);
 putchar(hex[(i / 4) % 2 + ((i / 8) * 2)]);
 putchar(hex[i % 4 + ((i / 8) * 4)]);
 }
-putchar('\n');
 return (0);
 }
