@@ -11,5 +11,6 @@ print_alphabet();
 print_alphabet_x10();
 _islower(int c);
 _isalpha(int c);
+_abs(int);
 return (0);
 }
