@@ -15,5 +15,9 @@ last_digit = 0;
 else
 last_digit = n % 10;
 _putchar('0' + last_digit);
+int r;
+r = print_last_digit(INT_MIN);
+_putchar('0' + r);
+_putchar('\n');
 return (last_digit);
 }
