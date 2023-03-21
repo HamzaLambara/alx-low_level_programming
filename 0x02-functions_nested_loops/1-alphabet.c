@@ -7,33 +7,10 @@
  */
 void print_alphabet(void)
 {
-    int i;
-
-    for (i = 'a'; i <= 'z'; i++)
-    {
-        _putchar(i);
-    }
-    _putchar('\n');
-}
-
-/**
- * main - Entry point
- * 
- * Return: Always 0 (Success)
- */
-int main(void)
+int i;
+for (i = 'a'; i <= 'z'; i++)
 {
-    print_alphabet();
-
-    return (0);
+_putchar(i);
 }
-
-/* File: main.h */
-
-#ifndef MAIN_H
-#define MAIN_H
-
-int _putchar(char c);
-
-#endif /* MAIN_H */
-
+_putchar('\n');
+}
