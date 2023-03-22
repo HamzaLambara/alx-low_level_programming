@@ -15,6 +15,7 @@ print_sign(int n);
 _abs(int n);
 print_last_digit(int n);
 times_table();
+int add(int, int);
 jack_bauer();
 return (0);
 }
