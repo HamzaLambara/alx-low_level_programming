@@ -14,6 +14,7 @@ _isalpha(int c);
 print_sign(int n);
 _abs(int n);
 print_last_digit(int n);
+times_table();
 jack_bauer();
 return (0);
 }
