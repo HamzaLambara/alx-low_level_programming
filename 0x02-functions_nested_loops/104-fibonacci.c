@@ -1,28 +1,22 @@
-/*
- * File: 104-fibonacci.c
- * Auth: Brennan D Baraban
- *       Daniel Mutuku
- */
-
 #include <stdio.h>
 
 /**
- * main - Prints the first 98 Fibonacci numbers, starting with 1 and 2.
+ * main - prints the first 98 Fibonacci numbers,
+ *        starting with 1 and 2, followed by a new line
  *
- * Return: Always 0.
+ * Return: 0 on success
  */
 int main(void)
 {
-int count;
-unsigned long int fib1 = 1, fib2 = 2, fib_sum;
-printf("%lu, %lu", fib1, fib2);
-for (count = 0; count < 96; count++)
+unsigned long int i, a = 1, b = 2, c;
+printf("%lu, %lu", a, b);
+for (i = 2; i < 98; i++)
 {
-fib_sum = fib1 + fib2;
-printf(", %lu", fib_sum);
-fib1 = fib2;
-fib2 = fib_sum;
+c = a + b;
+printf(", %lu", c);
+a = b;
+b = c;
 }
-printf("\n");
+putchar('\n');
 return (0);
 }
