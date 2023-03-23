@@ -1,20 +1,21 @@
 #include <stdio.h>
 
 /**
- * main - prints the first 50 Fibonacci numbers
+ * main - Entry point
  *
- * Return: Always 0
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-int count, n1 = 1, n2 = 2, next;
-printf("%d, %d", n1, n2);
-for (count = 3; count <= 50; count++)
+int i, n = 50;
+unsigned long prev = 1, curr = 2, next;
+printf("%lu, %lu", prev, curr);
+for (i = 3; i <= n; i++)
 {
-next = n1 + n2;
-printf(", %d", next);
-n1 = n2;
-n2 = next;
+next = prev + curr;
+printf(", %lu", next);
+prev = curr;
+curr = next;
 }
 printf("\n");
 return (0);
