@@ -17,6 +17,7 @@ print_last_digit(int n);
 times_table();
 add(int, int);
 print_to_98(int n);
+print_times_table(int n);
 jack_bauer();
 return (0);
 }
