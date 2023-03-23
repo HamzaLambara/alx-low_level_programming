@@ -1,32 +1,21 @@
-/*
- * File: 102-fibonacci.c
- * Auth: <Your Name>
- * Date: <Date>
- * Desc: Prints the first 50 Fibonacci numbers, starting with 1 and 2.
- */
-
 #include <stdio.h>
 
 /**
- * main - Entry point, prints the first 50 Fibonacci numbers
+ * main - prints the first 50 Fibonacci numbers
  *
- * Return: Always 0 (Success)
+ * Return: Always 0
  */
 int main(void)
 {
-int i, fib, fib_prev = 1, fib_curr = 2;
-printf("%d, %d, ", fib_prev, fib_curr);
-for (i = 3; i <= 50; i++)
+int count, n1 = 1, n2 = 2, next;
+printf("%d, %d", n1, n2);
+for (count = 3; count <= 50; count++)
 {
-fib = fib_prev + fib_curr;
-printf("%d", fib);
-if (i < 50)
-{
-printf(", ");
-}
-fib_prev = fib_curr;
-fib_curr = fib;
+next = n1 + n2;
+printf(", %d", next);
+n1 = n2;
+n2 = next;
 }
 printf("\n");
-return 0;
+return (0);
 }
