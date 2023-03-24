@@ -1,66 +1,31 @@
-#include "main.h"
 #include <stdio.h>
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * main - main block, solve fizz buzz from numbers 1 to 100
+ * Description: Multiples of 3, print Fizz. Multiples of 5, print Buzz.
+ * Multiples of both 3 and 5 should print FizzBuzz.
+ * Return: 0
  */
-int _putchar(char c)
-{
-return putchar(c);
-}
-
 int main(void)
 {
-int i, n;
-char num[3];
-for (i = 1; i <= 100; i++)
+int i;
+i = 1;
+while (i <= 100)
 {
 if (i % 3 == 0 && i % 5 == 0)
-{
-_putchar('F');
-_putchar('i');
-_putchar('z');
-_putchar('z');
-_putchar('B');
-_putchar('u');
-_putchar('z');
-_putchar('z');
-}
+printf("FizzBuzz");
 else if (i % 3 == 0)
-{
-_putchar('F');
-_putchar('i');
-_putchar('z');
-_putchar('z');
-}
+printf("Fizz");
 else if (i % 5 == 0)
-{
-_putchar('B');
-_putchar('u');
-_putchar('z');
-_putchar('z');
-}
+printf("Buzz");
 else
-{
-n = i;
-num[2] = (n % 10) + '0';
-n /= 10;
-num[1] = (n % 10) + '0';
-num[0] = (n / 10) + '0';
-if (i > 9)
-_putchar(num[0]);
-_putchar(num[1]);
-_putchar(num[2]);
-}
+printf("%d", i);
+
 if (i != 100)
-{
-_putchar(' ');
+printf(" ");
+i++;
 }
-}
-_putchar('\n');
+printf("\n");
+
 return (0);
-
 }
-
