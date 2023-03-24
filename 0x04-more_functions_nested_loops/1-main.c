@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * main - check the code
+ * main - checks the _isdigit function
  *
  * Return: Always 0.
  */
@@ -15,3 +15,4 @@ c = 'a';
 printf("%c: %d\n", c, _isdigit(c));
 return (0);
 }
+
