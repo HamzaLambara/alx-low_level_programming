@@ -1,23 +1,26 @@
-#include <stdio.h>
-#include <math.h>
+#include "main.h"
 
 /**
- * main - main block
- * Description: Find and print the largest prime factor of the number
- * 612852475143
- * Return: 0
+ * print_number - Prints an integer using _putchar.
+ * @n: The integer to be printed.
  */
-int main(void)
+void print_number(int n)
 {
-int c;
-long num = 612852475143;
-for (c = (int) sqrt(num); c > 2; c++)
+unsigned int num;
+if (n < 0)
 {
-if (num % c == 0)
+_putchar('-');
+num = -n;
+}
+else
 {
-printf("%d\n", c);
-break;
+num = n;
 }
+if (num / 10)
+{
+print_number(num / 10);
 }
-return (0);
+_putchar((num % 10) + '0');
+
 }
+
