@@ -1,37 +1,40 @@
+#include <math.h>
+#include <stdio.h>
 #include "main.h"
-
 /**
- * largest_prime_factor - finds the largest prime factor of a number
- * @n: the number to factorize
+ * main - finds and prints the largest prime factor of the number 612852475143
  *
- * Return: the largest prime factor of n
- */
-long largest_prime_factor(long n)
-{
-long factor;
-
-for (factor = 2; factor < n; factor++)
-{
-while (n % factor == 0)
-{
-n /= factor;
-}
-}
-return n;
-
-}
-
-/**
- * main - Entry point
- *
- * Return: Always 0
+ * Return: Always 0.
  */
 int main(void)
 {
-long n = 612852475143;
-long largest_factor = largest_prime_factor(n);
-_putchar(largest_factor + '0');
-_putchar('\n');
-return 0;
+long int num = 612852475143;
+long int largest_factor = 0;
+long int i;
+while (num % 2 == 0)
+{
+largest_factor = 2;
+num /= 2;
+}
+for (i = 3; i <= sqrt(num); i += 2)
+{
+while (num % i == 0)
+{
+largest_factor = i;
+num /= i;
+}
+}
+if (num > 2)
+{
+largest_factor = num;
+}
+while (largest_factor > 0)
+{
+putchar((largest_factor % 10) + '0');
+largest_factor /= 10;
+}
+putchar('\n');
+return (0);
+
 }
 
