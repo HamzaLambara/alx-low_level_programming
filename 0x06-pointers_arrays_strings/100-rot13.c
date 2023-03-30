@@ -11,7 +11,6 @@ char *rot13(char *s)
 {
 char *p = s;
 char letter;
-int i;
 
 while (*p != '\0')
 {
