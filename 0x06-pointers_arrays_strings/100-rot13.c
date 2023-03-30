@@ -1,6 +1,5 @@
 #include "holberton.h"
 
-#include <stdio.h>
 /**
  * rot13 - Encodes a string using the rot13 cipher.
  *
