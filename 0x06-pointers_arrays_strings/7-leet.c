@@ -1,11 +1,13 @@
 #include "holberton.h"
 
-/**
- * leet - encode a string into 1337
- * @s: string
- * Return: encoded string `s`
- */
+#include "main.h"
 
+/**
+ * leet - encodes a string into 1337
+ * @s: the string to be encoded
+ *
+ * Return: the encoded string
+ */
 char *leet(char *s)
 {
 int i, j;
@@ -14,19 +16,16 @@ char numbers[] = "4433007711";
 
 for (i = 0; s[i] != '\0'; i++)
 {
-j = 0;
-while (letters[j] != '\0')
+for (j = 0; letters[j] != '\0'; j++)
 {
 if (s[i] == letters[j])
 {
 s[i] = numbers[j];
 break;
 }
-j++;
 }
 }
 
 return s;
-
 }
 
