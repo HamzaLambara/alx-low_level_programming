@@ -1,7 +1,13 @@
 #include "holberton.h"
-#include "main.h"
-#include <stdio.h>
 
+#include <stdio.h>
+/**
+ * rot13 - Encodes a string using the rot13 cipher.
+ *
+ * @s: The string to be encoded.
+ *
+ * Return: A pointer to the encoded string.
+ */
 char *rot13(char *s)
 {
 char *p = s;
