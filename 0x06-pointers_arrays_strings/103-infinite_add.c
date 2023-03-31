@@ -1,44 +1,50 @@
 #include "holberton.h"
-
 /**
- * infinite_add - Adds two numbers
- * @n1: First number to add
- * @n2: Second number to add
- * @r: Buffer to store the result
- * @size_r: Size of the buffer
+ * infinite_add - Adds two numbers.
+ * @n1: First number to be added.
+ * @n2: Second number to be added.
+ * @r: Buffer to store result.
+ * @size_r: Size of the buffer.
  *
- * Return: Pointer to the result or 0 if the result can't be stored in r
+ * Return: Pointer to the result, or 0 if buffer size is too small.
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i, j, k, carry, sum;
+	int len1 = 0, len2 = 0, carry = 0, sum = 0;
+	int i = 0, j = 0, k = 0;
 
-	for (i = 0; n1[i] != '\0'; i++)
-		;
-	for (j = 0; n2[j] != '\0'; j++)
-		;
-	if (i + 2 > size_r || j + 2 > size_r)
+	while (n1[len1] != '\0')
+		len1++;
+	while (n2[len2] != '\0')
+		len2++;
+
+	if (len1 + 2 > size_r || len2 + 2 > size_r)
 		return (0);
-	r[size_r - 1] = '\0';
-	carry = 0;
-	for (i--, j--, k = size_r - 2; k >= 0 && (i >= 0 || j >= 0); i--, j--, k--)
+
+	for (i = len1 - 1, j = len2 - 1, k = 0; i >= 0 || j >= 0 || carry; i--, j--, k++)
 	{
 		sum = carry;
 		if (i >= 0)
 			sum += n1[i] - '0';
 		if (j >= 0)
 			sum += n2[j] - '0';
+
 		carry = sum / 10;
 		r[k] = (sum % 10) + '0';
 	}
-	if (carry)
-	{
-		if (k < 0)
-			return (0);
-		r[k--] = carry + '0';
-	}
-	if (k < 0)
+
+	if (k > size_r)
 		return (0);
-	return (r + k + 1);
+
+	r[k--] = '\0';
+
+	for (i = 0; i < k; i++, k--)
+	{
+		char c = r[i];
+		r[i] = r[k];
+		r[k] = c;
+	}
+
+	return (r);
 }
 
