@@ -1,4 +1,5 @@
 #include "holberton.h"
+
 /**
  * rot13 - Encode a string using ROT13 encryption
  * @str: The string to be encoded
@@ -27,7 +28,7 @@ i++;
 }
 p++;
 }
-return str;
 
+return (str);
 }
 
