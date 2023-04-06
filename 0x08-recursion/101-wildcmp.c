@@ -16,6 +16,7 @@ if (*s2 == '*')
 /* Skip consecutive asterisks in s2 */
 while (*(s2 + 1) == '*')
 s2++;
+
 if (*s1 == '\0' && *(s2 + 1) == '\0')
 return (1);
 
