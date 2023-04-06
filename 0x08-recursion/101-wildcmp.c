@@ -1,58 +1,36 @@
 #include "holberton.h"
 
 /**
- * wildcmp - compare two strings with "wildcard expansion" capabilities
- * @s1: string 1
- * @s2: string 2
- * Return: 1 if strings can be considered identical, else 0
+ * wildcmp - compares two strings and returns 1 if they can be considered
+ * identical, otherwise return 0. The second string can contain the special
+ * character * that can replace any string (including an empty string).
+ * @s1: the first string
+ * @s2: the second string
+ *
+ * Return: 1 if s1 and s2 can be considered identical, otherwise 0.
  */
-
 int wildcmp(char *s1, char *s2)
 {
-	if (*s1 == '\0' && *s2 == '\0')
-		return (1);
-	else if (*s1 == '\0' || *s2 == '\0')
-	{
-		if (*s1 == '\0' && *s2 == '*')
-			return wildcmp(s1, ++s2);
-		else if (*s1 == '*' && *s2 == '\0')
-			return wildcmp(++s1, s2);
-		return (0);
-	}
-
-	if (*s1 == *s2)
-	{
-		return wildcmp(++s1, ++s2);
-	}
-	else if (*s1 == '*')
-	{
-		if (*(s1 + 1) == '*')
-			return wildcmp(++s1, s2);
-		else
-		{
-			return wildcmp(s1, findsrc(s2, *(s1 + 1), 0, 0) + s2);
-		}
-	}
-	else if (*s2 == '*')
-	{
-		if (*(s2 + 1) == '*')
-			return wildcmp(s1, ++s2);
-		else
-		{
-			return wildcmp(s1 + findsrc(s1, *(s2 + 1), 0, 0), s2);
-		}
-	}
-
-	return (0);
-
-}
-
-int findsrc(char *s, char c, int i, int p)
+if (*s2 == '*')
 {
-	if (*(s + i) == '\0')
-		return (p + 1);
-	else if (*(s + i) == c || *(s + i) == '*')
-		p = i;
+/* Skip consecutive asterisks in s2 */
+while (*(s2 + 1) == '*')
+s2++;
+if (*s1 == '\0' && *(s2 + 1) == '\0')
+return (1);
 
-	return (findsrc(s, c, i + 1, p));
+if (*s1 == '\0')
+return (wildcmp(s1, s2 + 1));
+
+return (wildcmp(s1, s2 + 1) || wildcmp(s1 + 1, s2));
 }
+
+if (*s1 == '\0' || *s2 == '\0')
+return (*s1 == *s2);
+
+if (*s1 != *s2)
+return (0);
+
+return (wildcmp(s1 + 1, s2 + 1));
+}
+
