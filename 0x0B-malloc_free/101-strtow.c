@@ -52,31 +52,24 @@ for (i = 0; str[i]; i++)
 if (str[i] != ' ')
 {
 len = 0;
-
 for (j = i; str[j] && str[j] != ' '; j++)
 len++;
-
 tmp = malloc(sizeof(char) * (len + 1));
-
 if (tmp == NULL)
 {
 for (k = 0; k < i; k++)
 free(matrix[k]);
-
 free(matrix);
 return (NULL);
 }
-
 for (j = i; str[j] && str[j] != ' '; j++)
 tmp[j - i] = str[j];
-
 tmp[j - i] = '\0';
 matrix[k] = tmp;
 k++;
 i = j - 1;
 }
 }
-
 matrix[k] = NULL;
 return (matrix);
 }
