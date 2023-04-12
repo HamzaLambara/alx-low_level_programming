@@ -1,85 +1,84 @@
 #include "holberton.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * count_words - Counts the number of words in a string.
- * @str: The string to count the words of.
+ * @str: The string to count the words in.
  *
  * Return: The number of words in str.
  */
-static int count_words(char *str)
+int count_words(char *str)
 {
-int i, count = 0;
+    int count = 0, i;
 
-for (i = 0; str[i] != '\0'; ++i)
-{
-if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
-{
-++count;
-}
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
+            count++;
+    }
+
+    return (count);
 }
 
-return (count);
+/**
+ * free_words - Frees memory allocated for an array of words.
+ * @words: The array of words to free.
+ */
+void free_words(char **words)
+{
+    int i;
+
+    for (i = 0; words[i] != NULL; i++)
+        free(words[i]);
+
+    free(words);
 }
 
 /**
  * strtow - Splits a string into words.
  * @str: The string to split.
  *
- * Return: If str == NULL, str == "", or memory allocation fails - NULL.
- *         Otherwise - a pointer to an array of strings (words).
- *         Each element of this array contains a single word, null-terminated.
- *         The last element of the returned array is NULL.
+ * Return: A pointer to an array of strings (words) or NULL if
+ *         str == NULL, str == "" or if memory allocation fails.
  */
 char **strtow(char *str)
 {
-char **words;
-int i, j, k, len, count;
-if (str == NULL || *str == '\0')
-return (NULL);
+    char **words;
+    int i, j, k, count = 0, len = 0;
 
-count = count_words(str);
-words = malloc(sizeof(char *) * (count + 1));
-if (words == NULL)
-return (NULL);
+    if (str == NULL || *str == '\0')
+        return (NULL);
 
-for (i = 0, j = 0; j < count; ++j)
-{
-while (str[i] == ' ')
-++i;
+    count = count_words(str);
 
-len = 0;
-while (str[i + len] != ' ' && str[i + len] != '\0')
-++len;
+    words = malloc((count + 1) * sizeof(char *));
+    if (words == NULL)
+        return (NULL);
 
-words[j] = malloc(sizeof(char) * (len + 1));
-if (words[j] == NULL)
-{
-for (k = 0; k < j; ++k)
-free(words[k]);
-free(words);
-return (NULL);
-}
-for (k = 0; k < len; ++k)
-words[j][k] = str[i + k];
-words[j][k] = '\0';
-i += len;
-}
+    for (i = 0, k = 0; i < count; i++)
+    {
+        while (str[k] == ' ')
+            k++;
 
-words[j] = NULL;
-/* Check if the input string only contains spaces */
-for (i = 0; str[i] != '\0'; ++i)
-{
-if (str[i] != ' ')
-break;
-}
-if (str[i] == '\0')
-{
-free(words[0]);
-free(words);
-return (NULL);
-}
+        for (len = 0, j = k; str[j] != ' ' && str[j] != '\0'; j++)
+            len++;
 
-return (words);
+        words[i] = malloc((len + 1) * sizeof(char));
+        if (words[i] == NULL)
+        {
+            free_words(words);
+            return (NULL);
+        }
+
+        for (j = 0; j < len; j++)
+            words[i][j] = str[k++];
+
+        words[i][j] = '\0';
+    }
+
+    words[i] = NULL;
+
+    return (words);
 }
 
