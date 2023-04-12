@@ -9,17 +9,17 @@
  */
 static int count_words(char *str)
 {
-    int i, count = 0;
+int i, count = 0;
 
-    for (i = 0; str[i] != '\0'; ++i)
-    {
-        if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
-        {
-            ++count;
-        }
-    }
+for (i = 0; str[i] != '\0'; ++i)
+{
+if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
+{
+++count;
+}
+}
 
-    return (count);
+return (count);
 }
 
 /**
@@ -33,56 +33,53 @@ static int count_words(char *str)
  */
 char **strtow(char *str)
 {
-    char **words;
-    int i, j, k, len, count;
+char **words;
+int i, j, k, len, count;
+if (str == NULL || *str == '\0')
+return (NULL);
 
-    if (str == NULL || *str == '\0')
-        return (NULL);
+count = count_words(str);
+words = malloc(sizeof(char *) * (count + 1));
+if (words == NULL)
+return (NULL);
 
-    count = count_words(str);
-    words = malloc(sizeof(char *) * (count + 1));
-    if (words == NULL)
-        return (NULL);
+for (i = 0, j = 0; j < count; ++j)
+{
+while (str[i] == ' ')
+++i;
 
-    for (i = 0, j = 0; j < count; ++j)
-    {
-        while (str[i] == ' ')
-            ++i;
+len = 0;
+while (str[i + len] != ' ' && str[i + len] != '\0')
+++len;
 
-        len = 0;
-        while (str[i + len] != ' ' && str[i + len] != '\0')
-            ++len;
+words[j] = malloc(sizeof(char) * (len + 1));
+if (words[j] == NULL)
+{
+for (k = 0; k < j; ++k)
+free(words[k]);
+free(words);
+return (NULL);
+}
+for (k = 0; k < len; ++k)
+words[j][k] = str[i + k];
+words[j][k] = '\0';
+i += len;
+}
 
-        words[j] = malloc(sizeof(char) * (len + 1));
-        if (words[j] == NULL)
-        {
-            for (k = 0; k < j; ++k)
-                free(words[k]);
-            free(words);
-            return (NULL);
-        }
+words[j] = NULL;
+/* Check if the input string only contains spaces */
+for (i = 0; str[i] != '\0'; ++i)
+{
+if (str[i] != ' ')
+break;
+}
+if (str[i] == '\0')
+{
+free(words[0]);
+free(words);
+return (NULL);
+}
 
-        for (k = 0; k < len; ++k)
-            words[j][k] = str[i + k];
-        words[j][k] = '\0';
-        i += len;
-    }
-
-    words[j] = NULL;
-
-    /* Check if the input string only contains spaces */
-    for (i = 0; str[i] != '\0'; ++i)
-    {
-        if (str[i] != ' ')
-            break;
-    }
-    if (str[i] == '\0')
-    {
-        free(words[0]);
-        free(words);
-        return (NULL);
-    }
-
-    return (words);
+return (words);
 }
 
