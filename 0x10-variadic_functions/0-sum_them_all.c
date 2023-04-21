@@ -1,6 +1,7 @@
 #include "variadic_functions.h"
 
 /**
+ * struct checker - Struct to check the format of each argument
  * sum_them_all - return the sum of all its parameters
  * @n: number of extra params
  * Return: total sum
