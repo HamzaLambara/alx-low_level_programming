@@ -189,7 +189,7 @@ void print_elf_header(const char *filename)
 	if (bytes_read == -1)
 		error_exit("Error reading file");
 
-	if (bytes_read < sizeof(Elf64_Ehdr))
+	if ((size_t)bytes_read < sizeof(Elf64_Ehdr))
 		error_exit("File too small to be an ELF file");
 
 	if (elf_header.e_ident[EI_MAG0] != ELFMAG0 ||
